@@ -1,0 +1,6 @@
+fastapi
+celery
+uvicorn
+pydantic
+python-jose
+python-dotenv

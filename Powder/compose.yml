@@ -1,0 +1,35 @@
+services:
+  nginx:
+    build: ./gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - auth_service
+    networks:
+      - backend
+
+  auth_service:
+    build: ./auth_service
+    expose:
+      - "8001"
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///user.db
+    volumes:
+      - ./auth_service:/app:rw
+    networks:
+      - backend
+    deploy:
+      replicas: 2
+
+  log_service:
+    build: ./log_service
+    volumes:
+      - ./log_service:/app:rw
+    networks:
+      - backend
+    deploy:
+      replicas: 5
+
+networks:
+  backend:
+    driver: bridge
