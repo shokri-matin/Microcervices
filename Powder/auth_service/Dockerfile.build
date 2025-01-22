@@ -1,0 +1,11 @@
+# docker build -t authservice:latest -f Dockerfile.build .
+# Use a lightweight image with Python 3.9
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+COPY requirements.txt .  
+
+# Install the required Python packages from requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt

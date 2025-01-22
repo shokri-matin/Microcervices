@@ -1,0 +1,27 @@
+# Ignore Python compiled files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore dependency directories
+venv/
+env/
+.venv/
+.env/
+*.egg-info/
+dist/
+build/
+
+# Ignore Celery-related files (if not needed)
+celerybeat-schedule
+celerybeat.pid
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db

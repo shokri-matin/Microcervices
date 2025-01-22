@@ -1,6 +1,6 @@
-fastapi
-celery
-uvicorn
-pydantic
-python-jose
-python-dotenv
+fastapi==0.115.6
+celery==5.4.0
+uvicorn==0.34.0
+pydantic==2.10.5
+python-jose==3.3.0
+python-dotenv==1.0.1
