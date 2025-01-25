@@ -1,3 +1,5 @@
+from celery import Celery
+
 app = Celery(
     "powder",
     broker="pyamqp://default_user_ArL_lqp3PYA34scUGPJ:lH65WgtwCceioGeC4ripdGhrwvFeS_Qv@172.22.6.30:30672//",  # Updated RabbitMQ broker URL
