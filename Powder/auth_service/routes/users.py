@@ -8,8 +8,6 @@ from sqlmodel import select  # Import select to query the database
 from fastapi.security import OAuth2PasswordRequestForm  # Import OAuth2PasswordRequestForm for sign-in handling
 from pydantic import BaseModel
 
-
-
 # Define a custom request body form without grant_type
 class CustomOAuth2PasswordRequestForm(BaseModel):
     username: str
@@ -20,7 +18,7 @@ class CustomOAuth2PasswordRequestForm(BaseModel):
 user_router = APIRouter(tags=["User"])
 hash_password = HashPassword()  # Initialize the HashPassword utility for password operations
 
-@user_router.post("/api/register", status_code=status.HTTP_201_CREATED)
+@user_router.post("/api/v1/register", status_code=status.HTTP_201_CREATED)
 async def register(user: NewUser,
                    session: AsyncSession = Depends(get_session),
                    ) -> dict:
@@ -66,7 +64,7 @@ async def register(user: NewUser,
     return {"message": "User successfully registered!"}
 
 
-@user_router.post("/api/auth", status_code=status.HTTP_200_OK, response_model=TokenResponse)
+@user_router.post("/api/v1/auth", status_code=status.HTTP_200_OK, response_model=TokenResponse)
 async def token(user: OAuth2PasswordRequestForm = Depends(), session: AsyncSession = Depends(get_session)) -> dict:
     """
     This endpoint is used for user sign-in. It accepts the username (email) and password,

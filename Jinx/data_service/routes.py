@@ -1,6 +1,7 @@
 import os
 
 from fastapi import APIRouter, Depends, Request
+from fastapi.responses import JSONResponse
 from tasks import log_task
 from db import get_data_from_db
 from verification import verify_access_token
@@ -46,9 +47,7 @@ async def search_data(
         log_message = f"Data fetched completely for ISDN: {isdn}, category: {category}, from {start_date} to {end_date}. fetched {len(data)} records."
         await generate_log(user, request, log_message, log_level)
 
-        return {
-            "result": data
-        }
+        return JSONResponse(content=result_json)
 
     except ValueError as ve:
         # Handle invalid date formats

@@ -1,8 +1,11 @@
+import os
 from celery import Celery
+
+RABBITMQ_ADDR = os.getenv("RABBITMQ_ADDR", "unknown_service")
 
 app = Celery(
     "powder",
-    broker="pyamqp://default_user_ArL_lqp3PYA34scUGPJ:lH65WgtwCceioGeC4ripdGhrwvFeS_Qv@172.22.6.30:30672//",  # Updated RabbitMQ broker URL
+    broker=RABBITMQ_ADDR,  # Updated RabbitMQ broker URL
     backend="rpc://",
 )
 

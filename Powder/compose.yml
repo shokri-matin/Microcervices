@@ -7,19 +7,19 @@ services:
       - auth_service
     networks:
       - backend
+    deploy:
+      replicas: 1
 
   auth_service:
     build: ./auth_service
     expose:
       - "8001"
-    environment:
-      - DATABASE_URL=sqlite+aiosqlite:///user.db
     volumes:
       - ./auth_service:/app:rw
     networks:
       - backend
     deploy:
-      replicas: 2
+      replicas: 1
 
   log_service:
     build: ./log_service
@@ -28,7 +28,7 @@ services:
     networks:
       - backend
     deploy:
-      replicas: 5
+      replicas: 1
 
 networks:
   backend:
