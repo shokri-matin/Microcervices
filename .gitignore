@@ -14,9 +14,7 @@ __pycache__/
 
 # Ignore dependency directories
 venv/
-env/
 .venv/
-.env/
 *.egg-info/
 dist/
 build/
